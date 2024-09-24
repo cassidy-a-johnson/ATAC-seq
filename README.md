@@ -5,9 +5,11 @@ The combination of bash commands and Rscripts depends on the tool being used. Ra
 
 Required bash tools: bowtie2, samtools, deeptools, macs2, markdups.
 
-Required Rscript libraries: install.packages('BiocManager')
+Required Rscript libraries: 
+```
+install.packages('BiocManager')
 BiocManager::install('RockefellerUniversity/RU_ATACseq',subdir='atacseq')
-
+```
 Note: some of these filtering steps are optional.
 
 This was done in 2024 with the 4.2.3 version of R.
