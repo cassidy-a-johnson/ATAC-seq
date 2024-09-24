@@ -11,5 +11,14 @@ Note: some of these filtering steps are optional.
 
 This was done in 2024 with the 4.2.3 version of R.
 
+****
+
+## Recommended Order
+1. bowtie2
+2. samtools
+3. [optional] markdups
+4a. macs2
+4b. deeptools (bamCoverage) 
+
 Cassidy Johnson
 Rockefeller University
