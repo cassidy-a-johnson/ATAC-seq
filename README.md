@@ -17,8 +17,8 @@ This was done in 2024 with the 4.2.3 version of R.
 1. bowtie2
 2. samtools
 3. [optional] markdups
-4a. macs2
-4b. deeptools (bamCoverage) 
+4. deeptools (bamCoverage)
+5. macs2 
 
-Cassidy Johnson
+### Cassidy Johnson
 Rockefeller University
