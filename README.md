@@ -10,3 +10,6 @@ BiocManager::install('RockefellerUniversity/RU_ATACseq',subdir='atacseq')
 Note: some of these filtering steps are optional.
 
 This was done in 2024 with the 4.2.3 version of R.
+
+Cassidy Johnson
+Rockefeller University
