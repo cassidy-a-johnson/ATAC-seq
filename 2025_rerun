@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#SBATCH -o /lustre/fs5/vgl/scratch/cjohnson02/vocal_learning_data/Lindsey/ZF_ATAC/sbatch/2025_bowtie2.%A.%a.out
+#SBATCH --job-name=bowtie2
+#SBATCH --account=jarv_condo_bank
+#SBATCH --partition=vgl_b
+#SBATCH --nodes=1
+#SBATCH --nice
+#SBATCH --cpus-per-task=16
+#SBATCH --time=24:02:00
+#SBATCH --mail-type=all
+#SBATCH --mail-user=cjohnson02@rockefeller.edu
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=end
+#SBATCH -a 0-27%10
+
+
+#conda activate cutadaptenv
+cd /lustre/fs5/vgl/scratch/cjohnson02/vocal_learning_data/Lindsey/ZF_ATAC/2025/
+mkdir sams
+
+SMPL_LIST=($(<VAR_LS.txt))
+SMPL=${SMPL_LIST[${SLURM_ARRAY_TASK_ID}]}
+
+
+##INSERT REFERENCE HERE:
+bowtie2-build -f /lustre/fs5/vgl/scratch/cjohnson02/vocal_learning_data/Lindsey/ZF_ATAC/GCF_003957565.2_bTaeGut1.4.pri_genomic.fna zebrafinch
+bowtie2 -x zebrafinch -1 /lustre/fs5/vgl/scratch/cjohnson02/vocal_learning_data/Lindsey/ZF_ATAC/fqs/"$SMPL"_R1_001_val_1.fq.gz \
+     -2 /lustre/fs5/vgl/scratch/cjohnson02/vocal_learning_data/Lindsey/ZF_ATAC/fqs/"$SMPL"_R2_001_val_2.fq.gz \
+    -S /lustre/fs5/vgl/scratch/cjohnson02/vocal_learning_data/Lindsey/ZF_ATAC/2025/sams/"$SMPL".sam
+
+
